@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
+import Image from "next/image";
 
 type Product = {
   Product: string;
@@ -17,6 +18,21 @@ type Product = {
   "Sool (g)": number;
 };
 
+type RawProduct = {
+  Product: string;
+  Image: string;
+  URL: string;
+  Category: string;
+  "Energiaväärtus (kJ)": string | number;
+  "Energiaväärtus (kcal)": string | number;
+  "Rasvad (g)": string | number;
+  "Süsivesikud (g)": string | number;
+  "millest suhkrud (g)": string | number;
+  "Kiudained (g)": string | number;
+  "Valgud (g)": string | number;
+  "Sool (g)": string | number;
+};
+
 export default function Home() {
   const [products, setProducts] = useState<Product[]>([]);
   const [meal, setMeal] = useState<{ product: Product; qty: number }[]>([]);
@@ -28,8 +44,8 @@ export default function Home() {
     // Load products from public/data/products.json
     fetch("/data/products.json")
       .then((res) => res.json())
-      .then((data) => {
-        const cleaned = data.map((item: any) => ({
+      .then((data: RawProduct[]) => {
+        const cleaned = data.map((item: RawProduct) => ({
           ...item,
           "Energiaväärtus (kJ)": Number(item["Energiaväärtus (kJ)"]) || 0,
           "Energiaväärtus (kcal)": Number(item["Energiaväärtus (kcal)"]) || 0,
@@ -132,7 +148,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
           <div className="flex items-center justify-between">
             <h1 className="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-red-600 to-yellow-600 bg-clip-text text-transparent">
-              McDonald's Macro Tracker
+              McDonald&apos;s Macro Tracker
             </h1>
             <button
               onClick={() => setShowMealDetails(!showMealDetails)}
@@ -268,9 +284,11 @@ export default function Home() {
                         {/* Product Image */}
                         <div className="aspect-square p-4 bg-gradient-to-br from-yellow-50 to-red-50">
                           {product.Image ? (
-                            <img
+                            <Image
                               src={product.Image}
                               alt={product.Product}
+                              width={200}
+                              height={200}
                               className="w-full h-full object-contain"
                             />
                           ) : (
@@ -347,9 +365,11 @@ export default function Home() {
                   <div key={`meal-${item.product.Product}-${index}`} className="bg-gray-50 rounded-lg p-3 hover:bg-gray-100 transition-colors">
                     <div className="flex items-center gap-3">
                       {item.product.Image && (
-                        <img
+                        <Image
                           src={item.product.Image}
                           alt={item.product.Product}
+                          width={64}
+                          height={64}
                           className="w-16 h-16 object-contain rounded-lg bg-white p-1"
                         />
                       )}

@@ -1,16 +1,15 @@
-# Use the official Node.js 20 Alpine image as base
-FROM node:20-alpine AS base
+# Use the official Bun image as base
+FROM oven/bun:1 AS base
 
 # Install dependencies only when needed
 FROM base AS deps
-RUN apk add --no-cache libc6-compat
 WORKDIR /app
 
 # Copy package files
-COPY package.json bun.lock* ./
+COPY package.json bun.lock ./
 
-# Install dependencies with npm (since we have bun.lock but want to use npm in Docker)
-RUN npm ci --only=production
+# Install all dependencies (including devDependencies needed for build)
+RUN bun install --frozen-lockfile
 
 # Rebuild the source code only when needed
 FROM base AS builder
@@ -24,10 +23,10 @@ COPY . .
 ENV NEXT_TELEMETRY_DISABLED 1
 
 # Build the application
-RUN npm run build
+RUN bun run build
 
 # Production image, copy all the files and run next
-FROM base AS runner
+FROM oven/bun:1-alpine AS runner
 WORKDIR /app
 
 ENV NODE_ENV production
