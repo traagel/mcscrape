@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
@@ -13,6 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://bulk.traagel.dev"),
   title: "McDonald's Macro Tracker | Track Nutrition & Build Healthy Meals",
   description: "Track McDonald's nutrition information and build custom meals. Perfect for fitness, keto, and macro counting. Monitor calories, protein, carbs, and more with our interactive meal builder.",
   keywords: [
@@ -36,21 +37,14 @@ export const metadata: Metadata = {
     description: "Interactive nutrition tracker for McDonald's menu items. Perfect for fitness enthusiasts, keto dieters, and macro counting. Build custom meals and track calories, protein, carbs, and more.",
     type: "website",
     locale: "en_US",
-    url: "https://mcdonalds-macro-tracker.com",
+    url: "https://bulk.traagel.dev",
     siteName: "McDonald's Macro Tracker",
     images: [
       {
-        url: "/og-image.png",
+        url: "/og",
         width: 1200,
         height: 630,
         alt: "McDonald's Macro Tracker - Nutrition tracking for McDonald's menu",
-        type: "image/png",
-      },
-      {
-        url: "/og-image-square.png",
-        width: 1080,
-        height: 1080,
-        alt: "McDonald's Macro Tracker",
         type: "image/png",
       },
     ],
@@ -61,7 +55,7 @@ export const metadata: Metadata = {
     creator: "@macrotracker",
     title: "McDonald's Macro Tracker - Track Nutrition & Build Healthy Meals",
     description: "Interactive nutrition tracker for McDonald's menu items. Perfect for fitness, keto, and macro counting.",
-    images: ["/twitter-image.png"],
+    images: ["/twitter-image"],
   },
   facebook: {
     appId: "your_facebook_app_id",
@@ -72,21 +66,15 @@ export const metadata: Metadata = {
     yahoo: "your_yahoo_verification_code",
   },
   alternates: {
-    canonical: "https://mcdonalds-macro-tracker.com",
+    canonical: "https://bulk.traagel.dev",
     languages: {
-      "en-US": "https://mcdonalds-macro-tracker.com",
-      "en-GB": "https://mcdonalds-macro-tracker.com/en-gb",
+      "en-US": "https://bulk.traagel.dev",
+      "en-GB": "https://bulk.traagel.dev/en-gb",
     },
   },
   category: "Food & Nutrition",
   classification: "Health & Fitness",
   referrer: "origin-when-cross-origin",
-  viewport: "width=device-width, initial-scale=1",
-  themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#DC2626" },
-    { media: "(prefers-color-scheme: dark)", color: "#EF4444" },
-  ],
-  colorScheme: "light dark",
   manifest: "/manifest.json",
   appleWebApp: {
     capable: true,
@@ -118,8 +106,18 @@ export const metadata: Metadata = {
     "theme-color": "#DC2626",
     "msvalidate.01": "your_bing_verification_code",
     "pinterest-rich-pin": "true",
-    "og:see_also": "https://mcdonalds-macro-tracker.com",
+    "og:see_also": "https://bulk.traagel.dev",
   },
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#DC2626" },
+    { media: "(prefers-color-scheme: dark)", color: "#EF4444" },
+  ],
+  colorScheme: "light dark",
 };
 
 export default function RootLayout({
@@ -152,7 +150,7 @@ export default function RootLayout({
         <meta property="og:video" content="" />
         
         {/* Slack specific */}
-        <meta property="og:image:secure_url" content="https://mcdonalds-macro-tracker.com/og-image.png" />
+        <meta property="og:image:secure_url" content="https://bulk.traagel.dev/og" />
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
