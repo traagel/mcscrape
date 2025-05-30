@@ -1,36 +1,89 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🍟 McDonald's Macro Tracker
 
-## Getting Started
+A modern web application for tracking McDonald's menu items and calculating nutritional macros for meal planning. Perfect for fitness enthusiasts, keto dieters, and anyone who wants to make informed food choices at McDonald's.
 
-First, run the development server:
+*Created using Claude-4-Sonnet AI assistant*
+
+## 🛠️ Tech Stack
+
+- **React 19** - Modern UI library
+- **Next.js 15** - Full-stack React framework
+- **Bun** - Fast JavaScript runtime & package manager
+- **Docker** - Containerization for deployment
+
+## ✨ Features
+
+- **Complete McDonald's Menu**: Browse all menu items with detailed nutritional information
+- **Smart Meal Builder**: Add items to create custom meals and track totals
+- **Macro Tracking**: Monitor calories, protein, carbs, fat, fiber, sugar, and salt
+- **Protein Efficiency**: Calculate protein-to-calorie ratios for optimal protein intake
+- **Keto-Friendly Sorting**: Find low-carb options easily
+- **High Protein Sorting**: Identify protein-rich menu items
+- **Category Filtering**: Browse by menu categories (burgers, sides, drinks, etc.)
+- **Responsive Design**: Works seamlessly on desktop and mobile devices
+- **Real-time Calculations**: Instant nutritional summaries as you build your meal
+
+## 🎯 Perfect For
+
+- **Fitness & Bodybuilding**: Track protein intake and optimize macros
+- **Keto Diet**: Find low-carb, high-fat options
+- **Weight Management**: Monitor calorie intake
+- **General Health**: Make informed nutritional choices
+
+## 🚀 Getting Started
+
+### Development
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
+# Install dependencies
+bun install
+
+# Run the development server
 bun dev
+
+# Open http://localhost:3000 in your browser
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Docker Deployment
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+# Build the Docker image
+docker build -t mcdonalds-macro-tracker .
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+# Run the container
+docker run -p 3000:3000 mcdonalds-macro-tracker
+```
 
-## Learn More
+## 🏗️ Built With
 
-To learn more about Next.js, take a look at the following resources:
+- **Next.js 15** - React framework with App Router
+- **TypeScript** - Type-safe JavaScript
+- **Tailwind CSS** - Utility-first CSS framework
+- **React 19** - Latest React features
+- **Docker** - Containerization for easy deployment
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 📊 Nutritional Data
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+The app includes comprehensive nutritional information for McDonald's menu items:
+- Energy (kJ and kcal)
+- Protein (g)
+- Total Carbohydrates (g)
+- Sugar (g)
+- Fat (g)
+- Fiber (g)
+- Salt (g)
 
-## Deploy on Vercel
+## 🔧 Configuration
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+The app is configured for production deployment with:
+- Standalone output for optimal Docker builds
+- Package import optimizations
+- Production-ready security settings
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 📝 License
+
+This project is open source and available under the MIT License.
+
+---
+
+*Note: This is an unofficial tool for educational and personal use. Nutritional information is based on publicly available McDonald's data and should be verified with official sources for dietary decisions.*
