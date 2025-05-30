@@ -20,6 +20,10 @@ export async function GET() {
         {/* Header */}
         <div
           style={{
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            justifyContent: 'center',
             fontSize: 64,
             fontWeight: 800,
             background: 'linear-gradient(90deg, #DC2626 0%, #F59E0B 100%)',
@@ -30,9 +34,8 @@ export async function GET() {
             lineHeight: 1.1,
           }}
         >
-          McDonald's
-          <br />
-          Macro Tracker
+          <div>McDonald's</div>
+          <div>Macro Tracker</div>
         </div>
 
         {/* Features Grid */}
